@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>생활화학백과 — 일상용품 속 화학물질과 인체 영향</title>
+  <meta name="description" content="세제, 화장품, 플라스틱, 식품첨가물 등 일상생활용품 속 화학물질을 검색하고 인체에 미치는 영향을 확인하는 백과사전입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" data-route="home">
+      <span class="brand-mark">Hg</span>
+      <span>
+        <strong>생활화학백과</strong>
+        <small>Household Chemical Encyclopaedia</small>
+      </span>
+    </a>
+    <nav>
+      <a href="#home" data-route="home">검색</a>
+      <a href="#browse" data-route="browse">목록</a>
+      <a href="#guide" data-route="guide">이용안내</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-home" class="view">
+      <div class="hero">
+        <p class="kicker">일상 속 4만 가지 화학물질</p>
+        <h1>어떤 물질이<br />우리 몸에 어떤 일을 하나요?</h1>
+        <p class="lede">락스, 미세플라스틱, 파라벤, 과불화화합물처럼 생활용품에 들어 있는 화학물질을 검색하면 노출 경로, 급성·만성 영향, 취약 집단, 혼합 위험까지 모아서 보여 줍니다.</p>
+        <form id="search-form" class="search-box" autocomplete="off">
+          <label class="sr-only" for="q">화학물질 검색</label>
+          <input id="q" name="q" type="search" placeholder="예: 락스, BPA, 프탈레이트, 과산화수소, CAS 80-05-7" />
+          <button type="submit">검색</button>
+          <ul id="suggest" class="suggest" hidden></ul>
+        </form>
+        <p class="search-hint">한글명, 영문명, CAS 번호, 제품 속 이름(INCI)으로 찾을 수 있습니다.</p>
+      </div>
+      <div class="cats" id="home-cats"></div>
+      <section class="featured">
+        <h2>자주 찾는 생활화학물질</h2>
+        <div id="featured-list" class="card-grid"></div>
+      </section>
+    </section>
+
+    <section id="view-results" class="view" hidden>
+      <div class="page-head">
+        <h1 id="results-title">검색 결과</h1>
+        <p id="results-meta"></p>
+      </div>
+      <div id="results-list" class="result-list"></div>
+    </section>
+
+    <section id="view-browse" class="view" hidden>
+      <div class="page-head">
+        <h1>물질 목록</h1>
+        <p>카테고리로 일상용품 속 화학물질을 둘러보세요.</p>
+      </div>
+      <div class="browse-bar">
+        <select id="cat-filter"></select>
+        <input id="browse-q" type="search" placeholder="목록 안에서 다시 찾기" />
+      </div>
+      <div id="browse-list" class="result-list"></div>
+      <div class="pager">
+        <button type="button" id="prev-page">이전</button>
+        <span id="page-info"></span>
+        <button type="button" id="next-page">다음</button>
+      </div>
+    </section>
+
+    <section id="view-detail" class="view" hidden>
+      <article class="dossier" id="dossier"></article>
+    </section>
+
+    <section id="view-guide" class="view" hidden>
+      <article class="prose">
+        <h1>이용 안내</h1>
+        <p>이 백과는 세제, 화장품, 플라스틱, 식품첨가물, 방향제, 페인트, 섬유가공제처럼 <strong>일상생활용품에 쓰이는 화학물질</strong>을 찾아 인체 영향을 한곳에 모아 보는 검색 사전입니다.</p>
+        <h2>정보가 만들어지는 방식</h2>
+        <ul>
+          <li>로컬 목록은 유럽분자생물학연구소(EMBL-EBI)의 <strong>ChEBI</strong> 화합물 데이터에서 생활·소비자 관련 물질을 우선 추려 약 4만 건을 색인합니다.</li>
+          <li>상세 독성·GHS 분류는 검색 시 <strong>PubChem</strong>에서 받아, 위험문구(H-code)를 한글 인체영향 설명으로 풀어 보여 줍니다.</li>
+          <li>락스, BPA, 포름알데히드처럼 자주 노출되는 물질은 별도의 한국어 해설을 보강해 두었습니다.</li>
+        </ul>
+        <h2>꼭 알아 두세요</h2>
+        <p>용량, 농도, 노출 시간, 혼합 여부에 따라 실제 위험은 크게 달라집니다. 이 사이트는 교육·참고용이며 의학적 진단이나 응급처치 지침이 아닙니다. 제품 사고, 중독이 의심되면 즉시 1399(한국 중독정보), 119, 또는 의료기관에 연락하세요.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>출처 표기: ChEBI, PubChem, 국제 GHS 위험문구. 생활화학백과는 오픈 데이터를 재구성한 검색 도구입니다.</p>
+  </footer>
+
+  <script src="js/hazards.js"></script>
+  <script src="js/encyclopedia.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
